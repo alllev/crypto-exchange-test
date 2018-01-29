@@ -24,7 +24,7 @@ class ProfitCalculator {
       let bidOrderIdx = 0;
       askOrders.forEach((askOrder) => {
         const bidOrder = bidOrders[bidOrderIdx];
-        if (askOrder.amount > 0 && bidOrder.amount > 0) {
+        if (askOrder.amount > 0 && bidOrder.amount > 0 && askOrder.rate > 0) {
           if (askOrder.rate <= bidOrder.rate) {
             const orderAmount = askOrder.amount > bidOrder.amount ? bidOrder.amount : askOrder.amount;
             const profit = Profit.create(askOrder.rate, bidOrder.rate, orderAmount);
