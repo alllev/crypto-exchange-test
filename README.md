@@ -8,30 +8,30 @@
 # Запуск
 Перед запуском приложения необходимо чтобы были установлены NodeJS и NPM. Затем в корневом катологе приложения выполнить набор команд:
 
-npm install
+- npm install
 
 После успешной установки зависимостей выполнить команду для одновременного запуска приложения и тестов:
 
-npm run all
+- npm run all
 
 Запуск только приложения (количество asks и bids генерируется с произвольными данными в количестве 200 элементов):
 
-npm run start
+- npm run start
 
 Запуск только тестов:
 
-npm run test
+- npm run test
 
 # Структура проекта
-  tests/ 
-     profit-calculator.spec.js // Набор mocha unit тестов
-  app.js                       // Главный модуль приложения, точка входа
-  order.js                     // Модуль заказа для ask и bid
-  profit.js                    // Модуль значения полученной выгоды
-  profit-calculator.js         // Модуль расчёта значений полученной выгоды для массивов asks и bids
-  .eslintrc.json               // Модуль для настроек ESLint
-  .babelrc                     // Модуль для настроек Babel
-  package.json                 // Модуль конфигурации NPM
+     tests/ 
+       profit-calculator.spec.js  // Набор mocha unit тестов
+     app.js                       // Главный модуль приложения, точка входа
+     order.js                     // Модуль заказа для ask и bid
+     profit.js                    // Модуль значения полученной выгоды
+     profit-calculator.js         // Модуль расчёта значений полученной выгоды для массивов asks и bids
+     .eslintrc.json               // Модуль для настроек ESLint
+     .babelrc                     // Модуль для настроек Babel
+     package.json                 // Модуль конфигурации NPM
 
 # Допущения
 
