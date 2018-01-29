@@ -5,7 +5,7 @@ class Profit {
   }
 
   static create(askOrderRate, bidOrderRate, orderAmount) {
-    let percent = (orderAmount * (bidOrderRate - askOrderRate) / askOrderRate) * 100;
+    let percent = (bidOrderRate - askOrderRate) / askOrderRate * 100;
     percent = parseFloat(percent.toFixed());
     return new Profit(percent, orderAmount);
   }

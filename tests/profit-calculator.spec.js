@@ -6,39 +6,41 @@ describe('Profit calculator', () => {
   console.log('Run profit calculator tests');
 
   describe('.get()', () => {
-    it('should get 0 profit', () => {
+    it('should get 0 profit', done => {
       const askOrders = [
-        new Order(100, 1)
+        new Order(120, 1)
       ];
 
       const bidOrders = [
-        new Order(80, 1)
+        new Order(100, 1)
       ];
 
       const profitPromise = ProfitCalculator.get(askOrders, bidOrders);
       profitPromise.then(result => {
         expect(result).to.be.empty;
+        done();
       });
     });
 
-    it('should get 1 profit', () => {
+    it('should get 1 profit', done => {
       const askOrders = [
-        new Order(100, 1)
+          new Order(10000, 2)
       ];
 
       const bidOrders = [
-        new Order(120, 1)
+          new Order(15000, 1.5)
       ];
 
       const profitPromise = ProfitCalculator.get(askOrders, bidOrders);
       profitPromise.then(result => {
         expect(result).to.have.length(1);
-        expect(result[0].percent).to.equals(20);
-        expect(result[0].amount).to.equals(1);
+        expect(result[0].percent).to.equals(50);
+        expect(result[0].amount).to.equals(1.5);
+        done();
       });
     });
 
-    it('should get 2 profits', () => {
+    it('should get 2 profits', done => {
       const askOrders = [
         new Order(100, 1),
         new Order(200, 3)
@@ -52,12 +54,13 @@ describe('Profit calculator', () => {
       const profitPromise = ProfitCalculator.get(askOrders, bidOrders);
       profitPromise.then(result => {
         expect(result).to.have.length(2);
-        expect(result[1].percent).to.equals(300);
+        expect(result[1].percent).to.equals(100);
         expect(result[1].amount).to.equals(3);
+        done();
       });
     });
 
-    it('should get empty asks array error', () => {
+    it('should get empty asks array error', done => {
       const askOrders = [
       ];
 
@@ -68,10 +71,11 @@ describe('Profit calculator', () => {
       const profitPromise = ProfitCalculator.get(askOrders, bidOrders);
       profitPromise.catch(err => {
         expect(err).to.equals('The asks array is empty');
+        done();
       });
     });
 
-    it('should get empty bids array error', () => {
+    it('should get empty bids array error', done => {
       const askOrders = [
         new Order(120, 1)
       ];
@@ -82,10 +86,11 @@ describe('Profit calculator', () => {
       const profitPromise = ProfitCalculator.get(askOrders, bidOrders);
       profitPromise.catch(err => {
         expect(err).to.equals('The bids array is empty');
+        done();
       });
     });
 
-    it('should get asks array should less or equal the bids array error', () => {
+    it('should get asks array should less or equal the bids array error', done => {
       const askOrders = [
         new Order(120, 1),
         new Order(200, 5)
@@ -98,6 +103,7 @@ describe('Profit calculator', () => {
       const profitPromise = ProfitCalculator.get(askOrders, bidOrders);
       profitPromise.catch(err => {
         expect(err).to.equals('The asks array should less or equal than bids array');
+        done();
       });
     });
   });
