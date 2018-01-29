@@ -1,0 +1,29 @@
+{
+  "name": "crypto-exchange-test",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0"
+  },
+  "description": "Crypto exchange test",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Alex Levshin",
+  "license": "Proprietary",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0"
+  },
+  "scripts": {
+    "start": "node -r babel-register ./app.js",
+    "test": "mocha --require babel-core/register --ui bdd ./tests/profit-calculator.spec.js",
+    "all": "npm run start && npm run test"
+  }
+}
